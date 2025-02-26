@@ -52,7 +52,6 @@ router.get('/', async (req,res)=>{
             etaMedia: etaMediaTotale,
             soddisfazioneMedia: soddisfazioneTotale,
         };
-        console.log(soddisfazioneTotale,popolazioneSondaggi);
         //invio la risposta
         res.status(200).json(datiGeneraliCitta);
     }catch(err){
