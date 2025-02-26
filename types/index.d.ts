@@ -5,6 +5,7 @@ import Errors from "./Errors";
 import Quartieri from "./Quartieri";
 import Sondaggi from "./Sondaggi";
 import Utenti from "./Utenti";
+import Richieste from "./Richieste";
 import Voti from "./Voti";
 
 export type {
@@ -15,5 +16,6 @@ export type {
     Quartieri,
     Sondaggi,
     Utenti,
+    Richieste,
     Voti
 };

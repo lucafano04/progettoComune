@@ -88,7 +88,7 @@
                     :lat-lngs="quartiere.coordinate.map((c: number[]) => [c[1], c[0]])" 
                     :name="quartiere.nome.toString()"
                     :interactive="true"
-                    :color="zonaSel!==quartiere.self&&zonaSel!==''?'#A0A0A0':'#000000'"
+                    :color="'#000000'"
                     :fill-opacity="0.3"
                     :fill-color="getColorFromSoddisfazione(quartiere.soddisfazioneMedia || 0, zonaSel?true:false)"
                     @click="handlerZona(quartiere)"
@@ -98,7 +98,7 @@
                 <LPolygon 
                     :key="zonaSel" 
                     :lat-lngs="tipoSel.find(q => q.self === zonaSel)?.coordinate.map((c: number[]) => [c[1], c[0]]) || []" 
-                    :color="getColorFromSoddisfazione(tipoSel.find(q => q.self === zonaSel)?.soddisfazioneMedia || 0, false)" 
+                    :color="'#000000'" 
                     :fill-opacity="0.3"
                     :fillColor="getColorFromSoddisfazione(tipoSel.find(q => q.self === zonaSel)?.soddisfazioneMedia || 0, false)"
                     :name="tipoSel.find(q => q.self === zonaSel)?.nome.toString()"
