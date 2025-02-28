@@ -71,6 +71,11 @@
                 to: '/richieste',
                 command: () => history.push('/richieste')
             });
+            dropDownItems.value.push({
+                label: 'Gestione Ruoli',
+                icon: 'pi pi-fw pi-users',
+                to: '/gestione-ruoli',
+            });
         }
         dropDownItems.value.push({
             label: 'Logout',
