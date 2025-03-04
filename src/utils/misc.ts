@@ -26,13 +26,21 @@ function getColorFromSoddisfazione(soddisfazione: number, toGrey: boolean = fals
         return '#000000';
     }
     let red, green;
-    if(soddisfazione < 2.5){
-        red = Math.round(255*(1-soddisfazione/2.5));
+    if(soddisfazione <= 1.5){ // Red to orange
+        red = 255;
+        green = ((soddisfazione-1)/0.5)*127;
+    }else if(soddisfazione <= 2.5) { // Orange to yellow
+        red = 255;
+        green = 128+((soddisfazione-1.5)/1)*127;
+    }else if(soddisfazione <= 3.5) { // Yellow to green-yellow
+        red = 255-((soddisfazione-2.5)/1)*255;
         green = 255;
-    }else{
+    }else { // Green-yellow to green
         red = 0;
-        green = Math.round(255*((soddisfazione-2.5)/2.5));
+        green = ((soddisfazione-3.5)/1.5)*255;
     }
+    red = Math.round(red);
+    green = Math.round(green);
     // console.log(soddisfazione, toGrey,  toGrey ? `#${(red*0.8).toString(16).split('.')[0].padStart(2, '0')}${(green*0.8).toString(16).split('.')[0].padStart(2, '0')}00` : `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`);
     return toGrey ? `#${(red*0.8).toString(16).split('.')[0].padStart(2, '0')}${(green*0.8).toString(16).split('.')[0].padStart(2, '0')}00` : `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`;
 

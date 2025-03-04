@@ -64,6 +64,19 @@
                 command: () => history.push('/sondaggi')
             });
         }
+        if(user.ruolo === "Circoscrizione" || user.ruolo === "Amministratore"){
+            dropDownItems.value.push({
+                label: 'Richieste',
+                icon: 'pi pi-fw pi-question-circle',
+                to: '/richieste',
+                command: () => history.push('/richieste')
+            });
+            dropDownItems.value.push({
+                label: 'Gestione Ruoli',
+                icon: 'pi pi-fw pi-users',
+                to: '/gestione-ruoli',
+            });
+        }
         dropDownItems.value.push({
             label: 'Logout',
             icon: 'pi pi-fw pi-sign-out',

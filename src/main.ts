@@ -6,7 +6,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 
 import Aura from '@primevue/themes/aura'
 
-import { Divider, MegaMenu,Panel } from 'primevue';
+import { Divider, Panel } from 'primevue';
 
 import App from './App.vue'
 
@@ -17,6 +17,7 @@ import './index.css'
 import { getSession } from './utils/utenti';
 import { Utenti } from '../types';
 import { Home, Login, ModificaSondaggio, Sondaggi} from './components';
+import FakeRichieste from './components/FakeRichieste.vue';
 
 
 const user = ref<Utenti.User | null>(null);
@@ -31,6 +32,7 @@ const router = createRouter({
         { path: '/sondaggi', component: Sondaggi, props: { user } },
         { path: '/sondaggi/:id', component: ModificaSondaggio },
         { path: '/analisi/:tipo/:id', component: Home, props: { user } },
+        { path: '/richieste', component: FakeRichieste, props: { user } }
     ]
 });
 
@@ -55,7 +57,6 @@ app.use(router)
 app.use(ToastService)
 app.use(ConfirmationService)
 
-app.component('MegaMenu', MegaMenu)
 app.component('Panel', Panel)
 app.component('Divider', Divider)
 
@@ -85,6 +86,10 @@ router.afterEach((to,) => {
                     break;
                 case '/analisi':
                     if(user.value.ruolo !== 'Analista')
+                        router.push('/')
+                    break;
+                case '/richieste':
+                    if(user.value.ruolo !== 'Circoscrizione' && user.value.ruolo !== 'Amministratore')
                         router.push('/')
                     break;
                 default:
